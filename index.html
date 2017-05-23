@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CRUD</title>
+	<link rel="icon" href="fav.jpg" type="image/x-icon"/>
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link href="https://fonts.googleapis.com/css?family=Changa:200|Source+Sans+Pro:200" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+		<style type="text/css">
+			body {
+				font-family: Changa;
+				/*background-image: url("pic.jpg");*/
+				background-size: cover;
+				background-position: center;
+				background-repeat: none;
+			}
+			.nav-wrapper {
+				background-color: white;
+			}
+			a {
+				text-decoration: none;
+			}
+
+			#logo {
+				margin-left: 5%;
+				color: #304352;
+				text-decoration: none;
+			}
+
+			.container {
+				  font-family: 'Source Sans Pro', sans-serif;
+			}
+
+			#one,
+			#two,
+			#three {
+				color: #304352;
+			}
+
+			.colour {
+				color: #304352;
+			}
+
+			#content {
+				text-align: center;
+				margin: 0 auto;
+				padding-top: 20%;
+				letter-spacing: 2px;
+			}		
+
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				$("#title").hide();
+				$("#motto").hide();
+				$("#but").hide();
+				$("#arr").hide();
+				$("#logo,#one,#two,#three").hide();
+
+				function bgchange() {
+					$("body").css("background-color", "black");
+					$("body").css("color", "white");
+				}
+				setInterval(bgchange, 1000);
+
+				
+				function hideele(){
+					$("#title").hide();
+					$("#motto").hide();
+					$("#but").hide();
+					$("#arr").hide();
+					$("#logo,#one,#two,#three").hide();
+					$("#title").fadeIn(1500, function(){		
+							$("#motto").fadeIn(10000);
+							$("#but").fadeIn(10000);
+							$("#logo,#one,#two,#three").fadeIn(8000);
+							$("#arr").fadeIn(14000);
+						});
+				}
+				setTimeout(hideele, 1000);					
+
+				function navBar() {
+					$(".nav-wrapper").css("background-color", "black");
+					$("#logo,#one,#two,#three").css("color", "white");
+					$("#one,#two,#three").css("font-weight", "700");
+				}
+				setInterval(navBar, 1000);
+
+				// $("#one,#two,#three").on("hover",function() {
+				// 	this.css("background-color" "#c0c0c0");
+				// });
+			});
+
+				
+		</script>
+</head>
+<body>
+	<div class="navbar-fixed">
+	<nav>
+    <div class="nav-wrapper">
+      <a href="http://geekhaven.iiita.ac.in/" class="brand-logo" id="logo">phpCRUD</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right: 5%;">
+        <li><a href="#content" id="one">HOME</a></li>
+        <li><a href="#team" id="two">LOGIN</a></li>
+        <li><a href="#contact" id="three">SIGNUP</a></li>
+      </ul>
+    </div>
+  </nav>
+  </div>
+      <div class="container">
+  	<div id="content">
+  		<h2 id="title" style="letter-spacing: 6px;">CRUD</h2>
+  		<h5 id="motto"><b>" Simple crud application using php/MySQL "</b></h5><br>
+  		<a href="#" class="waves-effect waves-light btn" id="but"  style="background-color: black; border: 1px solid white;color: white;font-weight: 700;">VIEW SOURCE</a>
+  	</div>
+  	
+  </div>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
