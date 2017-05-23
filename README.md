@@ -13,8 +13,8 @@ A Crud Application using php/MySQL
 
 ## How the App looks:
 
-![HomePage](images/Screenshot from 2017-05-24 00-26-51.png)
+![HomePage](/images/Screenshot from 2017-05-24 00-26-51.png)
 
-![SignUp Page](images/Screenshot from 2017-05-24 00-28-01.png)
+![SignUp Page](/images/Screenshot from 2017-05-24 00-28-01.png)
 
-![LogIn Page](images/Screenshot from 2017-05-24 00-27-55.png)
+![LogIn Page](/images/Screenshot from 2017-05-24 00-27-55.png)
