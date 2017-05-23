@@ -1,5 +1,5 @@
 <?php
-	$name = $_POST['name'];
+	$name = $_POST['firstname'];
 	$password = $_POST['password'];
 
 	if(!empty($name) && !empty($password)) {
@@ -11,12 +11,26 @@
 		$row = mysqli_fetch_array($result);
 
 		if($row['name'] == $name && $row['password'] == $password) {
-			echo '<h1> "', $name, ' " You have logged in Successfully </h1>', '<br>';
+			// 
+			?>
+			<script type="text/javascript">
+				alert("Logged in Succesfully !");
+			</script>
+			<?php
 		}
 		else {
-			echo 'Error Logging In !';
+			// echo 'Error Logging In !';
+			?>
+			<script type="text/javascript">
+				alert("Error Logging In !");
+			</script>
+			<?php
 		}
 	}
 	else {
-		echo 'Enter All Details first';
+		?>
+			<script type="text/javascript">
+				alert("Enter All details First !");
+			</script>
+			<?php
 	}
