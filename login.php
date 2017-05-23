@@ -48,7 +48,7 @@
       <a href="#" class="brand-logo" id="logo" style="text-decoration: none;color: white;">phpCRUD</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right: 5%;">
          <li><a href="http://localhost/phpcrud/index.html#" id="out">LOG OUT</a></li>
-        <li><a href="#" id="two" style="border: 0.5px solid #c0c0c0;border-radius: 50%;">
+        <li><a href="#" id="two" style="border: 0.5px solid #c0c0c0;">
         	<?php
 				$name = $_POST['firstname'];
 				$password = $_POST['password'];
