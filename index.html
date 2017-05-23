@@ -4,7 +4,6 @@
 	<title>CRUD</title>
 	<link rel="icon" href="fav.jpg" type="image/x-icon"/>
 	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/css?family=Changa:200|Source+Sans+Pro:200" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -51,6 +50,93 @@
 				letter-spacing: 2px;
 			}		
 
+			.fa {
+ 			width: 60px;
+ 			display: block;
+ 			text-align: center;
+ 			color:#ffffff;
+ 			font:normal 45px 'FontAwesome';
+ 			line-height:60px;
+ 			text-rendering: auto;
+ 			padding-right: 5px;
+            -webkit-font-smoothing: antialiased;
+		}
+		.fa-angle-double-down:before {content: "\f103";}
+        
+        .bounce {
+ 			position: absolute;
+ 			bottom: 30px;
+ 			left: 50% ;
+ 			width: 60px;
+ 			height: 60px ;
+ 			margin-left:-30px;
+ 			border: 2px solid #ffffff;
+           -webkit-border-radius:50%;
+           -moz-border-radius:50%;
+           -ms-border-radius:50%;
+		    border-radius:50%;
+		    text-align: center;
+ 			animation: bounce 2s infinite;
+            -webkit-animation: bounce 2s infinite;
+            -moz-animation: bounce 2s infinite;
+            -o-animation: bounce 2s infinite;
+ 		}
+ 
+		@-webkit-keyframes bounce {
+			 0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
+			 40% {-webkit-transform: translateY(-30px);}
+ 			 60% {-webkit-transform: translateY(-15px);}
+		}
+ 
+		@-moz-keyframes bounce {
+			 0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
+ 			40% {-moz-transform: translateY(-30px);}
+ 			60% {-moz-transform: translateY(-15px);}
+		}	
+ 
+		@-o-keyframes bounce {
+			 0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
+ 			40% {-o-transform: translateY(-30px);}
+ 			60% {-o-transform: translateY(-15px);}
+		}
+		@keyframes bounce {
+ 			0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+ 		    40% {transform: translateY(-30px);}
+ 			60% {transform: translateY(-15px);}
+		}
+
+		#inst {
+			margin: 0 auto;
+			text-align: center;
+			font-family: 'Source Sans Pro', sans-serif;
+			letter-spacing: 2px;
+		}
+
+		#line,
+		#line1 {
+			width: 10%;
+			height: 3px solid white;
+			color: #c0c0c0;
+		}
+
+		#scroll {
+			font-family: 'Source Sans Pro', sans-serif;
+			font-weight: 700;
+			text-align: center;
+			margin: 0 auto;
+			color: #c0c0c0;
+		}
+
+		#signup {
+			margin: 0;
+			padding: 0;
+			font-family: 'Source Sans Pro', sans-serif;
+		}
+
+		#login {
+			text-align: center;
+			font-family: 'Source Sans Pro', sans-serif;
+		}
 		</style>
 		<script type="text/javascript">
 			$(document).ready(function() {
@@ -59,6 +145,10 @@
 				$("#motto").hide();
 				$("#but").hide();
 				$("#arr").hide();
+				$("#inst").hide();
+				$("#scroll").hide();
+				$("#signup").hide();
+				$("#login").hide();
 				$("#logo,#one,#two,#three").hide();
 
 				function bgchange() {
@@ -79,6 +169,8 @@
 							$("#but").fadeIn(10000);
 							$("#logo,#one,#two,#three").fadeIn(8000);
 							$("#arr").fadeIn(14000);
+							$("#scroll").fadeIn(10000);
+							$("#inst").fadeIn(10000);
 						});
 				}
 				setTimeout(hideele, 1000);					
@@ -90,10 +182,29 @@
 				}
 				setInterval(navBar, 1000);
 
-				// $("#one,#two,#three").on("hover",function() {
-				// 	this.css("background-color" "#c0c0c0");
-				// });
-			});
+				$("#three").click(function() {
+					$("#content").hide();
+					$("#scroll").hide();
+					$("#inst").hide();
+					$("#arr").hide();
+					$("#login").hide();
+					$("#signup").fadeIn(1500);
+				});
+
+				$("#two").click(function() {
+					$("#content").hide();
+					$("#scroll").hide();
+					$("#inst").hide();
+					$("#arr").hide();
+					$("#signup").hide();
+					$("#login").fadeIn(1500);
+				});
+
+				$("#one").click(function() {
+					$("#signup, #login").hide();
+					$("#content, #scroll, #inst, #arr").fadeIn(2000);
+				});
+		});
 
 				
 		</script>
@@ -104,9 +215,9 @@
     <div class="nav-wrapper">
       <a href="http://geekhaven.iiita.ac.in/" class="brand-logo" id="logo">phpCRUD</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right: 5%;">
-        <li><a href="#content" id="one">HOME</a></li>
-        <li><a href="#team" id="two">LOGIN</a></li>
-        <li><a href="#contact" id="three">SIGNUP</a></li>
+        <li><a href="#" id="one">HOME</a></li>
+        <li><a href="#" id="two">LOGIN</a></li>
+        <li><a href="#" id="three">SIGNUP</a></li>
       </ul>
     </div>
   </nav>
@@ -116,9 +227,93 @@
   		<h2 id="title" style="letter-spacing: 6px;">CRUD</h2>
   		<h5 id="motto"><b>" Simple crud application using php/MySQL "</b></h5><br>
   		<a href="#" class="waves-effect waves-light btn" id="but"  style="background-color: black; border: 1px solid white;color: white;font-weight: 700;">VIEW SOURCE</a>
+  	</div><br><br>
+  	<h6 id="scroll">SCROLL TO EXPLORE</h6>
+  	<a href="#inst"><div class="bounce" id="arr"><i class="fa fa-angle-double-down"></i></div></a>
+  	<br><br><br><br><br><br><br><br><br><br><br>
+  	<div id="inst">
+  		<h3>HOW IT WORKS</h3>
+  		<hr id="line">
+  		<br><br>
+  		<ul style="list-style: none;">
+  			<li><h3>CREATE AN ACCOUNT - SIGN UP</h3></li><br>
+  			<li><h3>LOG IN</h3></li><br>
+  			<li><h3>ENJOY THE APP !</h3></li><br>
+  		</ul>
+  	</div>
+  	<div id="signup">
+  		<h3 style="letter-spacing: 2px;color: white;text-align: center;">SIGN UP</h3>
+  		<hr id="line1">
+  		<div class="row">
+    <form method="POST" class="col s12" action="signup.php">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="icon_prefix" type="text" name="firstname" class="validate">
+          <label for="icon_prefix">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="icon_prefix" type="tel" name="lastname" class="validate">
+          <label for="icon_prefix">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" name="email" class="validate">
+          <label for="email" data-error="wrong" data-success="right">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="icon_prefix" type="password" name="password" class="validate">
+          <label for="icon_prefix">Password</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="icon_prefix" type="password" name="rpassword" class="validate">
+          <label for="icon_prefix">Retype Password</label>
+        </div>
+      </div>
+      <div class="row">
+      	<input type="submit" class="waves-effect waves-light btn" name="submit" value="SIGN UP" style="background-color: black; border: 1px solid white;color: white;font-weight: 700;margin-left: 43%;">
+      </div>
+    </form>
+  </div>
+  	</div>
+  	
+  </div>
+
+
+  <div id="login">
+  		<h3 style="letter-spacing: 2px;color: white;text-align: center;">LOG IN</h3>
+  		<hr id="line1" style="width: 7%;">
+  		<div class="row">
+    <form method="POST" class="col s12" action="login.php">
+      <div class="row">
+      <div class="input-field col s4"></div>
+        <div class="input-field col s4">
+          <input id="icon_prefix" type="text" name="firstname" class="validate">
+          <label for="icon_prefix">First Name</label>
+        </div>
+        <div class="input-field col s4"></div>
+      </div>
+      <div class="row">
+      <div class="input-field col s4"></div>
+        <div class="input-field col s4">
+          <input id="icon_prefix" type="password" name="password" class="validate">
+          <label for="icon_prefix">Password</label>
+        </div>
+        <div class="input-field col s4"></div>
+      </div>
+      <div class="row">
+      	<input type="submit" class="waves-effect waves-light btn" name="submit" value="LOG IN" style="background-color: black; border: 1px solid white;color: white;font-weight: 700;">
+      </div>
+    </form>
+  </div>
   	</div>
   	
   </div>
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 </body>
 </html>
