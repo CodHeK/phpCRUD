@@ -18,3 +18,5 @@ A Crud Application using php/MySQL
 ![SignUpPage](pic3.png)
 
 ![LogInPage](pic2.png)
+
+![ChangePassword](pic4.png)
