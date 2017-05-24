@@ -23,6 +23,6 @@ A Crud Application using php/MySQL
 
 ![NewPost](pic6.png)
 
-![YourPosts](pic7.png)
+![YourPosts](mypost.png)
 
-![AllPosts](pic8.png)
+![AllPosts](allpost.png)
