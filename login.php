@@ -28,6 +28,11 @@
 				text-decoration: none;
 			}
 
+			.class {
+				background-color: #c0c0c0;
+				color: black;
+			}
+
 
 	</style>
 
@@ -36,14 +41,35 @@
 			$("#AllP, #myp, #changep").hide();
 
 			$("#changepass").click(function() {
-				$("#AllP, #myp").hide();
+				$("#AllP, #myp, #allmyp").hide();
 				$("#changep").fadeIn(2000);
+
 			});
 
 			$("#mypost").click(function() {
-				$("#AllP, #changep").hide();
+				$("#AllP, #changep, #allmyp").hide();
 				$("#myp").fadeIn(2000);
+				
 			});
+
+			 $('.datepicker').pickadate({
+    			selectMonths: true, // Creates a dropdown to control month
+    			selectYears: 15 // Creates a dropdown of 15 years to control year
+ 			 });
+       
+			$("#allpost").click(function() {
+				$("#changep, #myp, #allmyp").hide();
+				$("#AllP").fadeIn(2000);
+				
+			});
+
+			$("#allmypost").click(function() {
+				$("#changep, #myp, #AllP").hide();
+				$("#allmyp").fadeIn(2000);
+				
+			});
+
+     
 		});
 	</script>
 </head>
@@ -75,6 +101,7 @@
     <div class="nav-wrapper">
       <div class="col s12">
         <a href="#" class="breadcrumb" id="allpost" style="font-weight: 700;color: white;">All Posts</a>
+        <a href="#" class="breadcrumb" id="allmypost" style="font-weight: 700;color: white;">My Posts</a>
         <a href="#" class="breadcrumb" id="mypost" style="font-weight: 700;color: white;">New Post</a>
         <a href="#" class="breadcrumb" id="changepass" style="font-weight: 700;color: white;">Change Password</a>
       </div>
@@ -82,20 +109,90 @@
   </nav>
   <hr style="margin-left: 5%;width: 80%; ">
           
-          <div id="AllP"></div>
+
+          <div id="allmyp">
+          	<h3 style="font-family: Source Sans Pro;margin-left: 5%;color: white;">My Posts :</h3>
+          	<hr style="margin-left: 5%;width: 80%;">
+          	<?php
+
+          		$db = mysqli_connect('localhost', 'root', '', 'posts')
+          			or die("Error connecting db");
+
+          		$q = mysqli_query($db, "SELECT * FROM nposts")
+          			or die("Error");
+
+
+				while($rows = mysqli_fetch_array($q)) {
+					if($rows['name'] == $name) {
+					echo '<br>';
+					echo '<div class = "col s12" id="posts" style="border: 0.5px solid #c0c0c0;margin-left:5%;width:80%;">';
+					echo '<h3 style="font-family: Source Sans Pro;font-weight: 700;color: white;margin-left:5%;">', $rows['title'], '</h3>';
+					echo '<hr style="margin-left:5%;width:90%;">', '<br>';
+					echo '<h5 style = "font-family: Source Sans Pro;color: white;margin-left:5%;">By,  <b> ',$rows['name'],'</b> on  <b>',$rows['dater'], '</b>', '<br>';
+					echo '<p style="font-family: Source Sans Pro;color:white;">',$rows['body'],'</p>';
+					echo '</div>', '<br>';
+
+				}
+			}
+
+
+          		?>
+          </div>
+          <div id="AllP">
+          <h3 style="font-family: Source Sans Pro;margin-left: 5%;color: white;">All Posts :</h3>
+          	<hr style="margin-left: 5%;width: 80%;">
+          	<?php
+
+          		$db = mysqli_connect('localhost', 'root', '', 'posts')
+          			or die("Error connecting db");
+
+          		$q = mysqli_query($db, "SELECT * FROM nposts;")
+          			or die("Error");
+
+
+				while($rows = mysqli_fetch_array($q)) {
+					echo '<br>';
+					echo '<div class = "col s12" id="posts" style="border: 0.5px solid #c0c0c0;margin-left:5%;width:80%;">';
+					echo '<h3 style="font-family: Source Sans Pro;font-weight: 700;color: white;margin-left:5%;">', $rows['title'], '</h3>';
+					echo '<hr style="margin-left:5%;width:90%;">', '<br>';
+					echo '<h5 style = "font-family: Source Sans Pro;color: white;margin-left:5%;">By,  <b> ',$rows['name'],'</b> on  <b>',$rows['dater'], '</b>', '<br>';
+					echo '<p style="font-family: Source Sans Pro;color:white;">',$rows['body'],'</p>';
+					echo '</div>', '<br>';
+
+				}
+
+
+          		?>
+          </div>
           <div id="myp">
           	<h3 style="font-family: 'Source Sans Pro', sans-serif;color: white;text-align: center;">Create a new post</h3><br>
           	<form method="POST" class="col s12" action="newpost.php">
           	<div class="row">
+          	<div class="row">
         <div class="input-field col s6" style="margin-left: 27%;">
+          <input id="name" type="text" name="name" class="validate">
+          <label for="name" data-error="wrong" data-success="right">Author's name</label>
+        </div>
+        </div>
+        <div class="input-field col s3" style="margin-left: 27%;">
           <input id="title" type="text" name="title" class="validate">
-          <label for="title" data-error="wrong" data-success="right">Add you post title</label>
+          <label for="title" data-error="wrong" data-success="right">Add your post title</label>
+        </div>
+        <div class="input-field col s3">
+        	<input id="dater" name="dater" type="date" class="datepicker"> 
+        	<label for="dater" data-error="wrong" data-success="right">Date of post</label>
         </div>
         </div>
         <div class="row">
         <div class="input-field col s6" style="margin-left: 27%;">
-          <textarea id="textarea1" name="body" class="materialize-textarea"></textarea>
-          <label for="textarea1">Body of your post</label>
+          <input id="summary" type="text" name="summary" class="validate">
+          <label for="title" data-error="wrong" data-success="right">Summary of your post</label>
+        </div>
+        </div>
+        <div class="row">
+        <div class="input-field col s6" style="margin-left: 27%;">
+          <textarea id="body" name="body" class="materialize-textarea"></textarea>
+          <label for="body">Body of your post</label>
         </div>
       </div>
       <div class="row">
