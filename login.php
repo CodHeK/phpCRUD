@@ -4,6 +4,7 @@
 	<title>MyProfile</title>
 	<link rel="icon" href="fav.jpg" type="image/x-icon"/>
 	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/css?family=Changa:200|Source+Sans+Pro:200" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -28,10 +29,11 @@
 				text-decoration: none;
 			}
 
-			.class {
-				background-color: #c0c0c0;
-				color: black;
+			.like {
+				color: white;
 			}
+
+
 
 
 	</style>
@@ -68,6 +70,11 @@
 				$("#allmyp").fadeIn(2000);
 				
 			});
+
+			$(".like").click(function() {
+				$(".like").css("color", "rgb(207,0,15)");
+			});
+
 
      
 		});
@@ -118,7 +125,7 @@
           		$db = mysqli_connect('localhost', 'root', '', 'posts')
           			or die("Error connecting db");
 
-          		$q = mysqli_query($db, "SELECT * FROM nposts")
+          		$q = mysqli_query($db, "SELECT * FROM nposts ORDER BY dater DESC;")
           			or die("Error");
 
 
@@ -130,6 +137,7 @@
 					echo '<hr style="margin-left:5%;width:90%;">', '<br>';
 					echo '<h5 style = "font-family: Source Sans Pro;color: white;margin-left:5%;">By,  <b> ',$rows['name'],'</b> on  <b>',$rows['dater'], '</b>', '<br>';
 					echo '<p style="font-family: Source Sans Pro;color:white;">',$rows['body'],'</p>';
+					// echo '<a href="#" style="text-decoration:none;" class="like"><i class="fa fa-heart" aria-hidden="true"></i></a>&nbsp&nbsp&nbsp', $rows['likes'] , '<br>';
 					echo '</div>', '<br>';
 
 				}
@@ -146,7 +154,7 @@
           		$db = mysqli_connect('localhost', 'root', '', 'posts')
           			or die("Error connecting db");
 
-          		$q = mysqli_query($db, "SELECT * FROM nposts;")
+          		$q = mysqli_query($db, "SELECT * FROM nposts ORDER BY dater DESC;")
           			or die("Error");
 
 
@@ -157,6 +165,7 @@
 					echo '<hr style="margin-left:5%;width:90%;">', '<br>';
 					echo '<h5 style = "font-family: Source Sans Pro;color: white;margin-left:5%;">By,  <b> ',$rows['name'],'</b> on  <b>',$rows['dater'], '</b>', '<br>';
 					echo '<p style="font-family: Source Sans Pro;color:white;">',$rows['body'],'</p>';
+					// echo '<a href="#" style="text-decoration:none;" class="like"><i class="fa fa-heart" aria-hidden="true"></i></a>&nbsp&nbsp&nbsp', $rows['likes'] , '<br>';
 					echo '</div>', '<br>';
 
 				}
