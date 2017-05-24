@@ -22,3 +22,7 @@ A Crud Application using php/MySQL
 ![ChangePassword](pic4.png)
 
 ![NewPost](pic6.png)
+
+![YourPosts](pic7.png)
+
+![AllPosts](pic8.png)
