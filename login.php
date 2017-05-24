@@ -34,9 +34,15 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#AllP, #myp, #changep").hide();
+
 			$("#changepass").click(function() {
 				$("#AllP, #myp").hide();
 				$("#changep").fadeIn(2000);
+			});
+
+			$("#mypost").click(function() {
+				$("#AllP, #changep").hide();
+				$("#myp").fadeIn(2000);
 			});
 		});
 	</script>
@@ -68,18 +74,41 @@
   <nav style="margin-left: 5%;">
     <div class="nav-wrapper">
       <div class="col s12">
-        <a href="#" class="breadcrumb">My Posts</a>
-        <a href="#" class="breadcrumb">New Post</a>
-        <a href="#" class="breadcrumb" id="changepass">Change Password</a>
+        <a href="#" class="breadcrumb" id="allpost" style="font-weight: 700;color: white;">All Posts</a>
+        <a href="#" class="breadcrumb" id="mypost" style="font-weight: 700;color: white;">New Post</a>
+        <a href="#" class="breadcrumb" id="changepass" style="font-weight: 700;color: white;">Change Password</a>
       </div>
     </div>
   </nav>
   <hr style="margin-left: 5%;width: 80%; ">
           
           <div id="AllP"></div>
-          <div id="myp"></div>
+          <div id="myp">
+          	<h3 style="font-family: 'Source Sans Pro', sans-serif;color: white;text-align: center;">Create a new post</h3><br>
+          	<form method="POST" class="col s12" action="newpost.php">
+          	<div class="row">
+        <div class="input-field col s6" style="margin-left: 27%;">
+          <input id="title" type="text" name="title" class="validate">
+          <label for="title" data-error="wrong" data-success="right">Add you post title</label>
+        </div>
+        </div>
+        <div class="row">
+        <div class="input-field col s6" style="margin-left: 27%;">
+          <textarea id="textarea1" name="body" class="materialize-textarea"></textarea>
+          <label for="textarea1">Body of your post</label>
+        </div>
+      </div>
+      <div class="row">
+      	<input type="submit" class="waves-effect waves-light btn" name="submit" value="SUBMIT POST" style="background-color: black; border: 1px solid white;color: white;font-weight: 700;margin-left: 44%;">
+      </div>
+      </form>
+      </div>
+  </div>
+      </div>
+          </div>
+
           <div id="changep">
-          		<h3 style="font-family: 'Source Sans Pro', sans-serif;color: white;text-align: center;">Change Password</h3>
+          		<h3 style="font-family: 'Source Sans Pro', sans-serif;color: white;text-align: center;">Change Password</h3><br>
           		<form method="POST" class="col s12" action="changep.php">
       <div class="row">
       <div class="input-field col s4"></div>
